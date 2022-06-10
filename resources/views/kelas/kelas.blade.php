@@ -48,9 +48,6 @@
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
-                @php
-                $no = 1;
-                @endphp
                 <tbody>
                     @foreach ($data as $row)
                     <tr>

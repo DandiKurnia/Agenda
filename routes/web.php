@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GuruController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\KelasController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
@@ -25,7 +26,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 // Admin Agenda
 Route::resource('/admin', AdminAgendaController::class)->middleware('admin');
 
-// Guru
+// Guru Agenda
 Route::resource('/agendaguru', GuruAgendaController::class);
 
 // Data Kelas 
@@ -33,6 +34,9 @@ Route::resource('/kelas', KelasController::class)->middleware('admin');
 
 // Data Guru
 Route::resource('/guru', GuruController::class)->middleware('admin');
+
+// Data User
+Route::resource('/user', UserController::class)->middleware('admin');
 
 // Login
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');

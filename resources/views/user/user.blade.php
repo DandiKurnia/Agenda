@@ -30,10 +30,10 @@
         <div class="card-header border-0">
             <div class="row align-items-center">
                 <div class="col">
-                    <h3 class="mb-0">Table</h3>
+                    <h3 class="mb-0">Table User</h3>
                 </div>
                 <div class="col text-right">
-                    <a href="{{ url('guru/create') }}" class="btn btn-sm btn-primary">Create</a>
+                    <a href="register" class="btn btn-sm btn-primary">Create</a>
                 </div>
             </div>
         </div>
@@ -43,28 +43,31 @@
                 <thead class="thead-light">
                     <tr>
                         <th scope="col">ID</th>
-                        <th scope="col">Nama Guru</th>
-                        <th scope="col">NIK</th>
-                        <th scope="col">Username</th>
+                        <th scope="col">Nama</th>
+                        <th scope="col">Usename</th>
                         <th scope="col">Password</th>
+                        <th scope="col">Role</th>
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
+                @php
+                $no = 1;
+                @endphp
                 <tbody>
                     @foreach ($data as $row)
                     <tr>
                         <th scope="row">{{ $loop->iteration }}</th>
-                        <td>{{ $row->user->name }}</td>
-                        <td>{{ $row->nik }}</td>
-                        <td>{{ $row->user->username }}</td>
-                        <td>{{ $row->user->password }}</td>
+                        <td>{{ $row->name }}</td>
+                        <td>{{ $row->username }}</td>
+                        <td>{{ $row->password }}</td>
+                        <td>{{ $row->role }}</td>
                         <td class="d-flex">
                             {{-- <button class="badge bg-transparent"><a href="/show{{ $row->id }}">edit</a></button>
                             --}}
-                            <a href="{{ ('guru/'.$row->id.'/edit') }}" class="button bg-transparent mr-2"><i
+                            <a href="{{ ('user/'.$row->id.'/edit') }}" class="button bg-transparent mr-2"><i
                                     class="fa fa-pencil-square-o text-yellow" aria-hidden="true"></i></a>
                             {{-- <button class="badge" href="/show{{ $row->id }}"></button> --}}
-                            <form method="POST" action="{{ url('guru/'.$row->id) }}">
+                            <form method="POST" action="{{ url('user/'.$row->id) }}">
                                 @csrf
                                 @method('delete')
                                 <button type="submit" class="button bg-transparent border-0"><i

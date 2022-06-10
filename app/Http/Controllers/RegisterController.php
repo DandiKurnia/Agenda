@@ -23,7 +23,7 @@ class RegisterController extends Controller
         $validdateDate['password'] = Hash::make($validdateDate['password']);
 
         User::create($validdateDate);
-        return redirect('/login')->with('success', 'Registration successfull! Please Login');
+        return redirect()->route('user.index')->with('success', 'Create Success !!');
         
     }
 }

@@ -60,7 +60,7 @@
                     @foreach ($data as $row)
                     <tr>
                         <th scope="row">{{ $loop->iteration }}</th>
-                        <td>{{ $row->user->username }}</td>
+                        <td>{{ $row->user->id }}</td>
                         <td>{{ $row->mata_pelajaran }}</td>
                         <td>{{ $row->materi }}</td>
                         <td>{{ $row->jam_pelajaran }}</td>

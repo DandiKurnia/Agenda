@@ -11,7 +11,7 @@
                         {{-- <fieldset disabled> --}}
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label">user_id</label>
-                                <input type="text" name="user_id" class="form-control" id="exampleInputEmail1" value="{{ old("user_id") }}"
+                                <input type="text" name="user_id" class="form-control" id="exampleInputEmail1"
                                     aria-describedby="emailHelp">
                                 @error('user_id')
                                 <div class="text-danger">

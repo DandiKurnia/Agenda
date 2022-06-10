@@ -14,9 +14,8 @@ class KelasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        $this->authorize('admin');
+    public function index(){
+        
         $data = Kelas::all();
         return view('kelas.kelas', compact('data'));
     }

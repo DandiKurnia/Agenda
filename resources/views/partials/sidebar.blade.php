@@ -19,8 +19,13 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{ Request::is('guru*') ? 'active' : '' }}" href="/guru">
+                        <a class="nav-link {{ Request::is('guru*') ? 'active'  :'' }}" href="/guru">
                             <i class="ni ni-single-02 {{ Request::is('guru*') ? 'text-red' : '' }}"></i> Guru
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ Request::is('user*') ? 'active'  :'' }}" href="/user">
+                            <i class="ni ni-circle-08 {{ Request::is('user*') ? 'text-pink' : '' }}"></i> user
                         </a>
                     </li>
                     @endcan

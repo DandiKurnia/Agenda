@@ -12,7 +12,7 @@
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">Nama Guru</label>
                             <input type="text" name="name" class="form-control" id="exampleInputEmail1"
-                            aria-describedby="name" value="{{ $data->name }}">
+                            aria-describedby="name" readonly value="{{ auth()->user()->name }}">
                             @error('name')
                             <div class="text-danger">
                                 {{ $message }}
@@ -23,7 +23,7 @@
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">user_id</label>
                             <input type="text" name="user_id" class="form-control" id="exampleInputEmail1"
-                                aria-describedby="emailHelp" value="{{ $data->user_id }}">
+                                aria-describedby="emailHelp" readonly value="{{ auth()->user()->id }}">
                             @error('user_id')
                             <div class="text-danger">
                                 {{ $message }}

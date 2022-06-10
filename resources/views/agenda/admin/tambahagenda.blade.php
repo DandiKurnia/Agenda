@@ -11,7 +11,7 @@
                         {{-- <fieldset disabled> --}}
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">Nama</label>
-                            <input type="text" name="name" class="form-control" id="exampleInputEmail1" value=""
+                            <input type="text" name="name" class="form-control" id="exampleInputEmail1" readonly value="{{ auth()->user()->name }}"
                                 aria-describedby="name" p>
                             @error('name')
                             <div class="text-danger">
@@ -22,7 +22,7 @@
                         </fieldset>
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">user_id</label>
-                            <input type="text" name="user_id" class="form-control" id="exampleInputEmail1"
+                            <input type="text" name="user_id" class="form-control" id="exampleInputEmail1" readonly value="{{ auth()->user()->id }}"
                                 value="{{ old("user_id") }}" aria-describedby="emailHelp">
                             @error('user_id')
                             <div class="text-danger">
