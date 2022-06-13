@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Agenda;
+use App\Models\Mapel;
 use Illuminate\Http\Request;
 
 class AdminAgendaController extends Controller
@@ -25,7 +26,9 @@ class AdminAgendaController extends Controller
      */
     public function create()
     {
-        return view('agenda.admin.tambahagenda'); 
+        $datamapel = Mapel::where('user_id', auth()->user()->id)->get();
+        // $datamapel1 = Mapel::all();
+    return view('agenda.admin.tambahagenda', compact('datamapel')); 
     }
 
     /**
@@ -39,9 +42,10 @@ class AdminAgendaController extends Controller
         $this->validate($request, [
             'name' => 'required',
             'user_id' => 'required',
-            'mata_pelajaran' => 'required',
+            'mapel_id' => 'required',
             'materi' => 'required',
-            'jam_pelajaran' => 'required',
+            'jam_mulai' => 'required',
+            'jam_selesai' => 'required',
             'absen' => 'required',
             'kelas' => 'required',
             'pembelajaran' => 'required',
@@ -79,9 +83,10 @@ class AdminAgendaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {   
+    {
         $data = Agenda::find($id);
-        return view('agenda.admin.editagenda', compact('data'));
+        $datamapel1 = Mapel::where('user_id', auth()->user()->id)->get();
+        return view('agenda.admin.editagenda', compact('data','datamapel1'));
     }
 
     /**

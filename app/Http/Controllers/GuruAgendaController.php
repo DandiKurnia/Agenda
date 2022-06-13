@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Agenda;
+use App\Models\Mapel;
 use Illuminate\Http\Request;
 
 class GuruAgendaController extends Controller
@@ -25,7 +26,8 @@ class GuruAgendaController extends Controller
      */
     public function create()
     {
-        return view('agenda.guru.tambahagenda'); 
+        $datamapel = Mapel::where('user_id', auth()->user()->id)->get();
+        return view('agenda.guru.tambahagenda',compact('datamapel')); 
     }
 
     /**
@@ -39,9 +41,10 @@ class GuruAgendaController extends Controller
         $this->validate($request, [
             'name' => 'required',
             'user_id' => 'required',
-            'mata_pelajaran' => 'required',
+            'mapel_id' => 'required',
             'materi' => 'required',
-            'jam_pelajaran' => 'required',
+            'jam_mulai' => 'required',
+            'jam_selesai' => 'required',
             'absen' => 'required',
             'kelas' => 'required',
             'pembelajaran' => 'required',
@@ -80,8 +83,9 @@ class GuruAgendaController extends Controller
      */
     public function edit($id)
     {
+        $datamapel1 = Mapel::where('user_id', auth()->user()->id)->get();
         $data = Agenda::find($id);
-        return view('agenda.guru.editagenda', compact('data'));
+        return view('agenda.guru.editagenda', compact('data','datamapel1'));
     }
 
     /**

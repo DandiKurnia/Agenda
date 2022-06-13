@@ -11,8 +11,8 @@
                         {{-- <fieldset disabled> --}}
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">Nama</label>
-                            <input type="text" name="name" class="form-control" id="exampleInputEmail1" readonly value="{{ auth()->user()->name }}"
-                                aria-describedby="name" p>
+                            <input type="text" name="name" class="form-control" id="exampleInputEmail1" readonly value="{{ auth()->user()->name  }}"
+                                aria-describedby="name">
                             @error('name')
                             <div class="text-danger">
                                 {{ $message }}
@@ -31,14 +31,20 @@
                             @enderror
                         </div>
                         <div class="mb-3">
-                            <label for="exampleInputEmail1" class="form-label">Mata Pelajaran</label>
-                            <input type="text" name="mata_pelajaran" class="form-control" id="exampleInputEmail1"
-                                value="{{ old("mata_pelajaran") }}" aria-describedby="emailHelp">
-                            @error('mata_pelajaran')
-                            <div class="text-danger">
-                                {{ $message }}
-                            </div>
-                            @enderror
+                                <label for="exampleInputPassword1" class="form-label">Mata pelajaran</label>
+                                <select class="form-select" name="mapel_id">
+                                    <option selected>Mata Pelajaran</option>
+                                    @foreach ($datamapel as $data1)
+                                    {{-- @if ($data->level == 'guru')    --}}
+                                    <option value="{{$data1->id}}">{{ $data1->mapel }}</option>
+                                    {{-- @endif --}}
+                                    @endforeach
+                                </select>
+                                @error('user_id')
+                                <div class="text-danger">
+                                    {{ $message }}
+                                </div>
+                                @enderror
                         </div>
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">Materi Pelajaran</label>
@@ -51,10 +57,20 @@
                             @enderror
                         </div>
                         <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Jam Mulai</label>
+                            <input type="time" name="jam_mulai" class="form-control" id="exampleInputEmail1"
+                                value="{{ old("jam_mulai") }}" aria-describedby="emailHelp">
+                            @error('jam_mulai')
+                            <div class="text-danger">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                        </div>
+                        <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">Jam Pelajaran</label>
-                            <input type="time" name="jam_pelajaran" class="form-control" id="exampleInputEmail1"
-                                value="{{ old("jam_pelajaran") }}" aria-describedby="emailHelp">
-                            @error('jam_pelajaran')
+                            <input type="time" name="jam_selesai" class="form-control" id="exampleInputEmail1"
+                                value="{{ old("jam_selesai") }}" aria-describedby="emailHelp">
+                            @error('jam_selesai')
                             <div class="text-danger">
                                 {{ $message }}
                             </div>

@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\KelasController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\MapelController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\GuruAgendaController;
 use App\Http\Controllers\AdminAgendaController;
@@ -21,7 +22,7 @@ use App\Http\Controllers\AdminAgendaController;
 |
 */
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home')->middleware('auth');
 
 // Admin Agenda
 Route::resource('/admin', AdminAgendaController::class)->middleware('admin');
@@ -37,6 +38,9 @@ Route::resource('/guru', GuruController::class)->middleware('admin');
 
 // Data User
 Route::resource('/user', UserController::class)->middleware('admin');
+
+// Data Mapel
+Route::resource('/mapel', MapelController::class)->middleware('admin');
 
 // Login
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');

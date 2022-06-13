@@ -1,0 +1,38 @@
+SELECT detailmenyewa.kode_sewa, COUNT(menyewa.total_film) AS jumlah
+FROM menyewa,detailmenyewa
+GROUP BY detailmenyewa.kode_sewa
+HAVING jumlah >=2
+
+SELECT detailmenyewa.kode_sewa, film.jenis, kelompokfilm.harga_sewa
+FROM detailmenyewa,film,kelompokfilm
+WHERE detailmenyewa.kode_sewa='s0003' AND film.jenis=kelompokfilm.jenis AND detailmenyewa.kode_film=film.kode_film
+
+SELECT detailmenyewa.kode_sewa, SUM(kelompokfilm.harga_sewa) AS total_harga
+FROM detailmenyewa,kelompokfilm,film
+WHERE detailmenyewa.kode_film=film.kode_film AND film.jenis=kelompokfilm.jenis
+GROUP BY detailmenyewa.kode_sewa
+HAVING total_harga >5000
+
+SELECT detailmenyewa.kode_sewa, film.judul
+FROM detailmenyewa,film
+WHERE detailmenyewa.kode_sewa='s0003' AND detailmenyewa.kode_film=film.kode_film 
+
+SELECT menyewa.kode_sewa,menyewa.total_harga
+FROM menyewa
+WHERE menyewa.total_harga=(SELECT MIN(menyewa.total_harga)
+FROM menyewa)
+
+SELECT SUM(menyewa.total_harga)
+FROM menyewa
+WHERE menyewa.no_identitas='001'
+
+SELECT film.kode_film
+FROM film
+WHERE film.jmlh_film<5
+
+SELECT detailmenyewa.kode_sewa, film.judul, kelompokfilm.harga_sewa
+FROM detailmenyewa, film,kelompokfilm
+WHERE detailmenyewa.kode_film=film.kode_film AND film.jenis=kelompokfilm.jenis
+
+
+

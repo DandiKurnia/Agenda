@@ -12,7 +12,7 @@
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">Nama Guru</label>
                             <input type="text" name="name" class="form-control" id="exampleInputEmail1"
-                            aria-describedby="name" value="{{ $data->name }}">
+                            aria-describedby="name" readonly value="{{ auth()->user()->name  }}"">
                             @error('name')
                             <div class="text-danger">
                                 {{ $message }}
@@ -23,7 +23,7 @@
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">user_id</label>
                             <input type="text" name="user_id" class="form-control" id="exampleInputEmail1"
-                                aria-describedby="emailHelp" value="{{ $data->user_id }}">
+                                aria-describedby="emailHelp" readonly value="{{ auth()->user()->id  }}">
                             @error('user_id')
                             <div class="text-danger">
                                 {{ $message }}
@@ -31,14 +31,20 @@
                             @enderror
                         </div>
                         <div class="mb-3">
-                            <label for="exampleInputEmail1" class="form-label">Mata Pelajaran</label>
-                            <input type="text" name="mata_pelajaran" class="form-control" id="exampleInputEmail1" value="{{ $data->mata_pelajaran }}"
-                                aria-describedby="emailHelp">
-                            @error('mata_pelajaran')
-                            <div class="text-danger">
-                                {{ $message }}
-                            </div>
-                            @enderror
+                                <label for="exampleInputPassword1" class="form-label">Mata pelajaran</label>
+                                <select class="form-select" name="mapel_id">
+                                    <option selected>{{ $data->mapel->mapel }}</option>
+                                    @foreach ($datamapel1 as $data1)
+                                    {{-- @if ($data->level == 'guru')    --}}
+                                    <option value="{{$data1->id}}">{{ $data1->mapel }}</option>
+                                    {{-- @endif --}}
+                                    @endforeach
+                                </select>
+                                @error('user_id')
+                                <div class="text-danger">
+                                    {{ $message }}
+                                </div>
+                                @enderror
                         </div>
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">Materi Pelajaran</label>
@@ -51,10 +57,20 @@
                             @enderror
                         </div>
                         <div class="mb-3">
-                            <label for="exampleInputEmail1" class="form-label">Jam Pelajaran</label>
-                            <input type="time" name="jam_pelajaran" class="form-control" id="exampleInputEmail1" value="{{ $data->jam_pelajaran }}"
+                            <label for="exampleInputEmail1" class="form-label">Mulai</label>
+                            <input type="time" name="jam_mulai" class="form-control" id="exampleInputEmail1" value="{{ $data->jam_mulai }}"
                                 aria-describedby="emailHelp">
-                            @error('jam_pelajaran')
+                            @error('jam_mulai')
+                            <div class="text-danger">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Selesai</label>
+                            <input type="time" name="jam_selesai" class="form-control" id="exampleInputEmail1" value="{{ $data->jam_selesai }}"
+                                aria-describedby="emailHelp">
+                            @error('jam_selesai')
                             <div class="text-danger">
                                 {{ $message }}
                             </div>
@@ -82,7 +98,7 @@
                         </div>
                         <div class="mb-3">
                             <select class="form-select" aria-label="Default select example" name="pembelajaran">
-                                <option selected>Pembelajaran</option>
+                                <option selected>{{ $data->pembelajaran }}</option>
                                 <option value="ptm">PTM</option>
                                 <option value="pjj">PJJ</option>
                             </select>

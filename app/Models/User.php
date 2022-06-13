@@ -57,4 +57,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Agenda::class);
     }
+
+    public function mapel()
+    {
+        return $this->hasMany(Mapel::class);
+    }
 }

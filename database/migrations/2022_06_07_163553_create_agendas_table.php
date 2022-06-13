@@ -17,9 +17,10 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->foreignId('user_id');
-            $table->string('mata_pelajaran');
+            $table->foreignId('mapel_id');
             $table->string('materi');
-            $table->time('jam_pelajaran');
+            $table->time('jam_mulai');
+            $table->time('jam_selesai');
             $table->string('absen');
             $table->string('kelas');
             $table->enum('pembelajaran', ['pjj', 'ptm'])->default('pjj');

@@ -6,7 +6,7 @@
         <div class="col-10">
             <div class="card shadow-sm">
                 <div class="card-body">
-                    <form method="POST" action="{{ url('guru/'.$data->id) }}"">
+                    <form method="POST" action="{{ url('mapel/'.$data->id) }}"">
                         @csrf
                         @method('put')
                         <div class="mb-3">
@@ -21,10 +21,10 @@
                         </div>
                         </fieldset>
                         <div class="mb-3">
-                            <label for="exampleInputEmail1" class="form-label">NIKq</label>
-                            <input type="text" name="nik" class="form-control" id="exampleInputEmail1"
-                                aria-describedby="emailHelp" value="{{ $data->nik }}">
-                            @error('nik')
+                            <label for="exampleInputEmail1" class="form-label">Nama Kelas</label>
+                            <input type="text" name="mapel" class="form-control" id="exampleInputEmail1"
+                                aria-describedby="emailHelp" value="{{ $data->mapel }}">
+                            @error('mapel')
                             <div class="text-danger">
                                 {{ $message }}
                             </div>

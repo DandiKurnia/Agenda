@@ -25,7 +25,12 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link {{ Request::is('user*') ? 'active'  :'' }}" href="/user">
-                            <i class="ni ni-circle-08 {{ Request::is('user*') ? 'text-pink' : '' }}"></i> user
+                            <i class="ni ni-circle-08 {{ Request::is('user*') ? 'text-pink' : '' }}"></i> User
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ Request::is('mapel*') ? 'active'  :'' }}" href="/mapel">
+                            <i class="ni ni-books {{ Request::is('mapel*') ? 'text-info' : '' }}"></i> Mapel
                         </a>
                     </li>
                     @endcan

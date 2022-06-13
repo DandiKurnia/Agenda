@@ -56,9 +56,10 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit($id)
     {
-        //
+        $data = User::find($id);
+        return view('user.edituser', compact('data'));
     }
 
     /**
@@ -68,9 +69,13 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request, $id)
     {
-        //
+        $data = User::find($id);
+        $request['password'] = bcrypt($request['password']);
+        $data->update($request->all());
+
+        return redirect()->route('user.index')->with('edit', 'Edit Success !!');
     }
 
     /**

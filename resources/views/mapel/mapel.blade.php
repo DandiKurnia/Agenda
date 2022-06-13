@@ -30,10 +30,10 @@
         <div class="card-header border-0">
             <div class="row align-items-center">
                 <div class="col">
-                    <h3 class="mb-0">Page visits</h3>
+                    <h3 class="mb-0">Tabel Mata Pelajaran</h3>
                 </div>
                 <div class="col text-right">
-                    <a href="{{ url('agendaguru/create') }}" class="btn btn-sm btn-primary">Absen</a>
+                    <a href="{{ url('mapel/create') }}" class="btn btn-sm btn-primary">Create</a>
                 </div>
             </div>
         </div>
@@ -45,15 +45,6 @@
                         <th scope="col">ID</th>
                         <th scope="col">Nama Guru</th>
                         <th scope="col">Mata Pelajaran</th>
-                        <th scope="col">Materi</th>
-                        <th scope="col">Mulai</th>
-                        <th scope="col">Selesai</th>
-                        <th scope="col">Absen</th>
-                        <th scope="col">Kelas</th>
-                        <th scope="col">Pembelajaran</th>
-                        <th scope="col">Link Pembelajaran</th>
-                        <th scope="col">Dokumentasi</th>
-                        <th scope="col">Keterangan</th>
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
@@ -61,25 +52,15 @@
                     @foreach ($data as $row)
                     <tr>
                         <th scope="row">{{ $loop->iteration }}</th>
-                        <td>{{ $row->user->username }}</td>
-                        <td>{{ $row->mapel->mapel }}</td>
-                        <td>{{ $row->materi }}</td>
-                        <td>{{ $row->jam_mulai }}</td>
-                        <td>{{ $row->jam_selesai }}</td>
-                        <td>{{ $row->absen }}</td>
-                        <td>{{ $row->kelas }}</td>
-                        <td>{{ $row->pembelajaran }}</td>
-                        <td>{{ $row->link }}</td>
-                        {{-- <td>{{ $row->dokumentasi }}</td> --}}
-                        <td>
-                            <img src="{{ asset('imageagenda/'.$row->dokumentasi) }}" alt="" style="width: 50px">
-                        </td>
-                        <td>{{ $row->keterangan }}</td>
+                        <td>{{ $row->user->name }}</td>
+                        <td>{{ $row->mapel }}</td>
                         <td class="d-flex">
-                            <a href="{{ url('agendaguru/'.$row->id.'/edit') }}" class="button bg-transparent mr-2"><i
+                            {{-- <button class="badge bg-transparent"><a href="/show{{ $row->id }}">edit</a></button>
+                            --}}
+                            <a href="{{ ('mapel/'.$row->id.'/edit') }}" class="button bg-transparent mr-2"><i
                                     class="fa fa-pencil-square-o text-yellow" aria-hidden="true"></i></a>
                             {{-- <button class="badge" href="/show{{ $row->id }}"></button> --}}
-                            <form method="POST" action="{{ url('agendaguru/'.$row->id) }}">
+                            <form method="POST" action="{{ url('mapel/'.$row->id) }}">
                                 @csrf
                                 @method('delete')
                                 <button type="submit" class="button bg-transparent border-0"><i

@@ -2,14 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Guru;
-use App\Models\User;
 use App\Models\Mapel;
-use App\Http\Requests\StoreGuruRequest;
-use App\Http\Requests\UpdateGuruRequest;
+use App\Models\User;
+use App\Http\Requests\StoreMapelRequest;
+use App\Http\Requests\UpdateMapelRequest;
 use Illuminate\Http\Request;
 
-class GuruController extends Controller
+class MapelController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,9 +17,8 @@ class GuruController extends Controller
      */
     public function index()
     {
-        // $this->authorize('admin');
-        $data = Guru::all();
-        return view('guru.guru', compact('data'));
+        $data = Mapel::all();
+        return view('mapel.mapel',compact('data'));
     }
 
     /**
@@ -31,34 +29,32 @@ class GuruController extends Controller
     public function create()
     {
         $datauser = User::all();
-        $datamapel = Mapel::all();
-        // $datamapel = Mapel::where('user_id', auth()->user()->id)->get();;
-        return view('guru.tambahguru',compact('datauser','datamapel')); 
+        return view('mapel.tambahmapel',compact('datauser'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreGuruRequest  $request
+     * @param  \App\Http\Requests\StoreMapelRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
         $this->validate($request, [
             'user_id' => 'required',
-            'nik' => 'required'
+            'mapel' => 'required'
         ]);
-        $data = Guru::create($request->all());
-        return redirect()->route('guru.index')->with('success', 'Create Success !!');
+        $data = Mapel::create($request->all());
+        return redirect()->route('mapel.index')->with('success', 'Create Success !!');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Guru  $guru
+     * @param  \App\Models\Mapel  $mapel
      * @return \Illuminate\Http\Response
      */
-    public function show(Guru $guru)
+    public function show(Mapel $mapel)
     {
         //
     }
@@ -66,41 +62,40 @@ class GuruController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Guru  $guru
+     * @param  \App\Models\Mapel  $mapel
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $data = Guru::find($id);
-        return view('guru.editguru', compact('data'));
+        $data = Mapel::find($id);
+        return view('mapel.editmapel', compact('data'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateGuruRequest  $request
-     * @param  \App\Models\Guru  $guru
+     * @param  \App\Http\Requests\UpdateMapelRequest  $request
+     * @param  \App\Models\Mapel  $mapel
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request,$id)
     {
-        $data = Guru::find($id);
+        $data = Mapel::find($id);
         $data->update($request->all());
 
-        return redirect()->route('guru.index')->with('edit', 'Edit Success !!');
+        return redirect()->route('mapel.index')->with('edit', 'Edit Success !!');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Guru  $guru
+     * @param  \App\Models\Mapel  $mapel
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        $data = Guru::find($id);
+        $data = Mapel::find($id);
         $data->delete();
-        return redirect()->route('guru.index')->with('delete', 'Delete Success !!');
-    
+        return redirect()->route('mapel.index')->with('delete', 'Delete Success !!');
     }
 }

@@ -44,6 +44,7 @@
                     <tr>
                         <th scope="col">ID</th>
                         <th scope="col">Nama Guru</th>
+                        <th scope="col">Mata Pelajaran</th>
                         <th scope="col">NIK</th>
                         <th scope="col">Username</th>
                         <th scope="col">Password</th>
@@ -55,6 +56,7 @@
                     <tr>
                         <th scope="row">{{ $loop->iteration }}</th>
                         <td>{{ $row->user->name }}</td>
+                        <td>{{ $row->mapel->mapel }}</td>
                         <td>{{ $row->nik }}</td>
                         <td>{{ $row->user->username }}</td>
                         <td>{{ $row->user->password }}</td>

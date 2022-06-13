@@ -46,7 +46,8 @@
                         <th scope="col">Nama Guru</th>
                         <th scope="col">Mata Pelajaran</th>
                         <th scope="col">Materi</th>
-                        <th scope="col">Jam Pembelajaran</th>
+                        <th scope="col">Mulai</th>
+                        <th scope="col">Selesai</th>
                         <th scope="col">Absen</th>
                         <th scope="col">Kelas</th>
                         <th scope="col">Pembelajaran</th>
@@ -60,10 +61,11 @@
                     @foreach ($data as $row)
                     <tr>
                         <th scope="row">{{ $loop->iteration }}</th>
-                        <td>{{ $row->user->id }}</td>
-                        <td>{{ $row->mata_pelajaran }}</td>
+                        <td>{{ $row->user->name }}</td>
+                        <td>{{ $row->mapel->mapel }}</td>
                         <td>{{ $row->materi }}</td>
-                        <td>{{ $row->jam_pelajaran }}</td>
+                        <td>{{ $row->jam_mulai }}</td>
+                        <td>{{ $row->jam_selesai }}</td>
                         <td>{{ $row->absen }}</td>
                         <td>{{ $row->kelas }}</td>
                         <td>{{ $row->pembelajaran }}</td>
